@@ -1,15 +1,16 @@
-export default function InputField({ unit, children }) {
+export default function InputField({ label, unit }) {
   return (
-    <div className="flex-1/2 flex-col gap-[0.75rem] items-start">
-      <label className="text-slate-700 text-[1rem] font-medium leading-[100%]">
-        {children}
+    <div className="flex w-[100%] flex-col items-start gap-[0.75rem]">
+      <label className="text-slate-700 text-[1rem] font-normal leading-[150%]">
+        {label}
       </label>
-      <div className="flex flex-row items-start rounded-[0.25rem] border border-slate-500 h-[3rem] overflow-hidden">
+
+      <div className="group flex self-stretch items-start h-[3rem] rounded-[0.25rem] border border-slate-500 hover:border-slate-900 overflow-hidden focus-within:border-lime">
         <input
-          className="flex flex-1/2 px-[1rem] items-center gap-[1.5rem] text-slate-900 text-[1.125rem] font-semibold leading-[125%] border-none focus:outline-none"
           type="text"
+          className="self-stretch w-[100%] flex items-center gap-[1.5rem] px-[1rem] border-none text-slate-900 focus:outline-none caret-slate-500 text-[1.125rem] font-medium"
         />
-        <div className="flex flex-col, justify-center items-center gap-[0.5rem] bg-slate-100 px-[1rem] py-[0.75rem] text-slate-700 text-[1.125rem] font-semibold leading-[125%]">
+        <div className="flex py-[0.75rem] px-[1rem] flex-col items-center justify-center gap-[0.5rem] bg-slate-100 text-[1.125rem] font-medium leading-[125%] text-slate-700 self-stretch group-focus-within:bg-lime group-focus-within:text-slate-900">
           {unit}
         </div>
       </div>
