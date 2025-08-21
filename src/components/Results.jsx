@@ -1,6 +1,6 @@
 import Illustration from "../assets/illustration-empty.svg";
 
-export default function Results({ result, monthlyRepayment, totalRepayment }) {
+export default function Results({ result }) {
   return (
     <section className="flex w-full lg:px-[2.5rem] lg:py-[2.5rem] px-[1.5rem] py-[2rem] flex-col items-center lg:gap-[2.5rem] gap-[1rem] justify-center lg:justify-start grow self-stretch lg:rounded-bl-[5rem] rounded-bl-none bg-slate-900">
       {!result ? (
@@ -35,7 +35,7 @@ export default function Results({ result, monthlyRepayment, totalRepayment }) {
                 Your monthly repayments
               </p>
               <p className="text-[2.5rem] lg:text-[3.5rem] font-bold leading-normal lg:leading-[125%] text-lime">
-                {monthlyRepayment}
+                £{result.monthlyRepayment}
               </p>
             </div>
             <hr className="h-[0.0625rem] self-stretch border-slate-50/25 " />
@@ -44,7 +44,7 @@ export default function Results({ result, monthlyRepayment, totalRepayment }) {
                 Total you'll repay over the term
               </p>
               <p className="self-stretch text-white text-[1.5rem] font-bold leading-[120%]">
-                {totalRepayment}
+                £{result.totalRepayment}
               </p>
             </div>
           </div>

@@ -12,6 +12,9 @@ export default function App() {
   // Set error for mortgage type
   const [typeError, setTypeError] = useState(false);
 
+  // Result state
+  const [result, setResult] = useState(null);
+
   // Handle the mortgage calculation
   function calculateMortgage(
     mortgageAmount,
@@ -50,22 +53,22 @@ export default function App() {
   function handleCalculate(e) {
     e.preventDefault();
 
-    if (!mortgageType) {
+    //validate all fields
+    if (!mortgageAmount || !mortgageTerm || !interestRate || !mortgageType) {
       setTypeError(true);
       return;
     }
     setTypeError(false);
 
     // Declare a variable "result" that calculate the mortgage and stores the object returned
-    const result = calculateMortgage(
+    const calcResult = calculateMortgage(
       mortgageAmount,
       mortgageTerm,
       interestRate,
       mortgageType
     );
 
-    // Debugging
-    console.log(result);
+    setResult(calcResult);
   }
 
   // The main app section
@@ -87,7 +90,7 @@ export default function App() {
         />
 
         {/* Result component */}
-        <Results monthlyRepayment="£1,797.74" totalRepayment="£539,322.94" />
+        <Results result={result} />
       </section>
 
       <p className="text-slate-700">
