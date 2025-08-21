@@ -3,7 +3,7 @@ import Illustration from "../assets/illustration-empty.svg";
 export default function Results({ result, monthlyRepayment, totalRepayment }) {
   return (
     <section className="flex w-full lg:px-[2.5rem] lg:py-[2.5rem] px-[1.5rem] py-[2rem] flex-col items-center lg:gap-[2.5rem] gap-[1rem] justify-center lg:justify-start grow self-stretch lg:rounded-bl-[5rem] rounded-bl-none bg-slate-900">
-      {result ? (
+      {!result ? (
         // Return empty state if result doesn't exist
         <div className="flex flex-col justify-center items-center gap-[1rem] grow self-stretch">
           <img src={Illustration} alt="" />
