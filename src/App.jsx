@@ -1,13 +1,12 @@
-import Button from "./components/Button";
 import Calculator from "./components/Calculator";
 import Results from "./components/Results";
 
 export default function App() {
   return (
-    <main className="w-full h-dvh flex flex-col gap-[2.5rem] items-center justify-center bg-slate-100">
-      <section className="flex flex-row max-w-[63rem] items-start overflow-hidden rounded-[1.5rem] bg-white shadow">
+    <main className="w-full h-auto lg:h-dvh flex flex-col md:p-[2.5rem] gap-[2.5rem] items-center justify-center pb-[1.5rem] bg-slate-100">
+      <section className="flex lg:flex-row flex-col lg:max-w-[63rem] w-[100%] h-auto items-start overflow-hidden md:rounded-[1.5rem] bg-white shadow">
         <Calculator />
-        <Results />
+        <Results monthlyRepayment="£1,797.74" totalRepayment="£539,322.94" />
       </section>
 
       <p className="text-slate-700">
