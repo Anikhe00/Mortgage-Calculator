@@ -9,18 +9,25 @@ export default function App() {
   const [interestRate, setInterestRate] = useState("");
   const [mortgageType, setMortgageType] = useState("");
 
+  // Set error for mortgage type
+  const [typeError, setTypeError] = useState(false);
+
+  // Handle the mortgage calculation
   function calculateMortgage(
     mortgageAmount,
     mortgageTerm,
     interestRate,
     mortgageType
   ) {
+    // Converts the input "string" to Float and declare the variable needed
     const principal = parseFloat(mortgageAmount);
     const monthlyRate = parseFloat(interestRate) / 100 / 12;
     const n = parseFloat(mortgageTerm) * 12;
 
+    // Declare the variables we need for the result
     let monthlyRepayment, totalRepayment;
 
+    // Check the users mortgage type and calculate the monthly and total payment
     if (mortgageType === "interestOnly") {
       monthlyRepayment = (principal * (parseFloat(interestRate) / 100)) / 12;
       totalRepayment = principal + monthlyRepayment * n;
@@ -32,15 +39,24 @@ export default function App() {
       totalRepayment = monthlyRepayment * n;
     }
 
+    // return an object containing the result
     return {
       monthlyRepayment: monthlyRepayment.toFixed(2),
       totalRepayment: totalRepayment.toFixed(2),
     };
   }
 
+  // Handles the form submit
   function handleCalculate(e) {
     e.preventDefault();
 
+    if (!mortgageType) {
+      setTypeError(true);
+      return;
+    }
+    setTypeError(false);
+
+    // Declare a variable "result" that calculate the mortgage and stores the object returned
     const result = calculateMortgage(
       mortgageAmount,
       mortgageTerm,
@@ -48,9 +64,11 @@ export default function App() {
       mortgageType
     );
 
+    // Debugging
     console.log(result);
   }
 
+  // The main app section
   return (
     <main className="w-full h-auto lg:h-dvh flex flex-col md:p-[2.5rem] gap-[2.5rem] items-center justify-center pb-[1.5rem] bg-slate-100">
       <section className="flex lg:flex-row flex-col lg:max-w-[63rem] w-[100%] h-auto items-start overflow-hidden md:rounded-[1.5rem] bg-white shadow">
@@ -65,6 +83,7 @@ export default function App() {
           mortgageType={mortgageType}
           setMortgageType={setMortgageType}
           onCalculate={handleCalculate}
+          typeError={typeError}
         />
 
         {/* Result component */}

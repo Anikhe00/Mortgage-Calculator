@@ -13,6 +13,7 @@ export default function Calculator({
   mortgageType,
   setMortgageType,
   onCalculate,
+  typeError,
 }) {
   return (
     <form
@@ -32,8 +33,23 @@ export default function Calculator({
           label="Mortgage Amount"
           unit="￡"
           unitPosition="before"
-          value={mortgageAmount}
-          onChange={(e) => setMortgageAmount(parseFloat(e.target.value))}
+          value={
+            mortgageAmount
+              ? Intl.NumberFormat("en-UK").format(
+                  Number(
+                    typeof mortgageAmount === "string"
+                      ? mortgageAmount.replace(/,/g, "")
+                      : mortgageAmount
+                  )
+                )
+              : ""
+          }
+          onChange={(e) => {
+            // Remove commas, allow only digits
+            const raw = e.target.value.replace(/,/g, "");
+            setMortgageAmount(raw);
+          }}
+          required
         />
 
         <div className="w-[100%] flex flex-col lg:flex-row md:flex-row items-start gap-[1.5rem]">
@@ -42,7 +58,8 @@ export default function Calculator({
             unit="years"
             unitPosition="after"
             value={mortgageTerm}
-            onChange={(e) => setMortgageTerm(parseFloat(e.target.value))}
+            onChange={(e) => setMortgageTerm(e.target.value)}
+            required
           />
 
           <InputField
@@ -50,7 +67,8 @@ export default function Calculator({
             unit="%"
             unitPosition="after"
             value={interestRate}
-            onChange={(e) => setInterestRate(parseFloat(e.target.value))}
+            onChange={(e) => setInterestRate(e.target.value)}
+            required
           />
         </div>
 
@@ -72,6 +90,12 @@ export default function Calculator({
             checked={mortgageType === "interestOnly"}
             onChange={(e) => setMortgageType(e.target.value)}
           />
+
+          {typeError && (
+            <p className="text-red text-[0.875rem] font-normal leading-[150%]">
+              This field is required
+            </p>
+          )}
         </div>
       </div>
 
