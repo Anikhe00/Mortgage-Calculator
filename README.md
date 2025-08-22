@@ -150,4 +150,4 @@ By building this project I practiced:
 **Shakirat Akanji**
 
 - GitHub: [@Anikhe00](https://github.com/Anikhe00)
-- Portfolio: _Add link here_
+- LinkedIn: [Shakirat Akanji](https://www.linkedin.com/in/shakirat-akanji/)
