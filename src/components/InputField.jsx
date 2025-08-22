@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function InputField({
   label,
@@ -8,10 +8,20 @@ export default function InputField({
   value,
   required,
 }) {
+  // Initialize state for touch for each input field
   const [touched, setTouched] = useState(false);
 
+  // Reset touched state when value becomes empty
+  useEffect(() => {
+    if (!value) {
+      setTouched(false);
+    }
+  }, [value]);
+
+  // Define what error means
   const showError = required && touched && !value;
 
+  // Create unit element to be reused in the input component
   const unitElement = unit && (
     <div
       className={`flex py-[0.75rem] px-[1rem] flex-col items-center justify-center gap-[0.5rem text-[1.125rem] font-medium leading-[125%] self-stretch group-focus-within:bg-lime group-focus-within:text-slate-900 ${

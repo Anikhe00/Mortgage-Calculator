@@ -3,7 +3,6 @@ import Calculator from "./components/Calculator";
 import Results from "./components/Results";
 
 export default function App() {
-  // State for form inputs
   const [mortgageAmount, setMortgageAmount] = useState("");
   const [mortgageTerm, setMortgageTerm] = useState("");
   const [interestRate, setInterestRate] = useState("");
@@ -11,6 +10,9 @@ export default function App() {
 
   // Set error for mortgage type
   const [typeError, setTypeError] = useState(false);
+
+  // State to track if user tries to submit form
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Result state
   const [result, setResult] = useState(null);
@@ -52,6 +54,7 @@ export default function App() {
   // Handles the form submit
   function handleCalculate(e) {
     e.preventDefault();
+    setFormSubmitted(true);
 
     //validate all fields
     if (!mortgageAmount || !mortgageTerm || !interestRate || !mortgageType) {
@@ -68,7 +71,19 @@ export default function App() {
       mortgageType
     );
 
+    // Use the calcResult from above to set the result state
     setResult(calcResult);
+  }
+
+  // Handles clear all
+  function handleClearAll() {
+    setMortgageAmount("");
+    setMortgageTerm("");
+    setInterestRate("");
+    setMortgageType("");
+    setResult(null);
+    setTypeError(false);
+    setFormSubmitted(false);
   }
 
   // The main app section
@@ -87,6 +102,8 @@ export default function App() {
           setMortgageType={setMortgageType}
           onCalculate={handleCalculate}
           typeError={typeError}
+          onClearAll={handleClearAll}
+          formSubmitted={formSubmitted}
         />
 
         {/* Result component */}

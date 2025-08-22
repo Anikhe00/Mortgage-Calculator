@@ -14,7 +14,11 @@ export default function Calculator({
   setMortgageType,
   onCalculate,
   typeError,
+  formSubmitted,
+  onClearAll,
 }) {
+  const showTypeError = formSubmitted && typeError;
+
   return (
     <form
       action=""
@@ -25,7 +29,7 @@ export default function Calculator({
         <h1 className="text-[1.5rem] text-slate-900 font-bold leading-[125%]">
           Mortgage Calculator
         </h1>
-        <SecButton />
+        <SecButton onClick={onClearAll} />
       </div>
 
       <div className="self-stretch flex flex-col items-start gap-[1.5rem]">
@@ -91,7 +95,7 @@ export default function Calculator({
             onChange={(e) => setMortgageType(e.target.value)}
           />
 
-          {typeError && (
+          {showTypeError && (
             <p className="text-red text-[0.875rem] font-normal leading-[150%]">
               This field is required
             </p>
