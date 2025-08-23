@@ -14,7 +14,7 @@ export default function RadioButton({ label, name, value, checked, onChange }) {
         checked={checked}
         onChange={onChange}
         className="sr-only peer"
-        aria-label={`${name} type`}
+        aria-label={`${label} type`}
       />
       <div
         className={`w-[1.25rem] h-[1.25rem] rounded-full transition-colors duration-200 relative flex items-center justify-center ${

@@ -36,7 +36,7 @@ export default function InputField({
     <div className="flex w-[100%] flex-col items-start gap-[0.75rem]">
       <label
         className="text-slate-700 text-[1rem] font-normal leading-[150%]"
-        for={label}
+        for={value}
       >
         {label}
       </label>
@@ -56,7 +56,7 @@ export default function InputField({
           className="self-stretch w-[100%] flex items-center gap-[1.5rem] px-[1rem] border-none text-slate-900 focus:outline-none caret-slate-500 text-[1.125rem] font-medium"
           onChange={onChange}
           onBlur={() => setTouched(true)}
-          id={label}
+          id={value}
         />
         {unitPosition === "after" && unitElement}
       </span>
