@@ -34,12 +34,15 @@ export default function InputField({
 
   return (
     <div className="flex w-[100%] flex-col items-start gap-[0.75rem]">
-      <label className="text-slate-700 text-[1rem] font-normal leading-[150%]">
+      <label
+        className="text-slate-700 text-[1rem] font-normal leading-[150%]"
+        for={label}
+      >
         {label}
       </label>
 
-      <div
-        className={`group flex self-stretch items-start h-[3rem] rounded-[0.25rem] overflow-hidden focus-within:border-lime ${
+      <span
+        className={`group inline-flex self-stretch items-start h-[3rem] rounded-[0.25rem] overflow-hidden focus-within:border-lime ${
           showError
             ? "border border-red"
             : "border border-slate-500 hover:border-slate-900"
@@ -53,9 +56,10 @@ export default function InputField({
           className="self-stretch w-[100%] flex items-center gap-[1.5rem] px-[1rem] border-none text-slate-900 focus:outline-none caret-slate-500 text-[1.125rem] font-medium"
           onChange={onChange}
           onBlur={() => setTouched(true)}
+          id={label}
         />
         {unitPosition === "after" && unitElement}
-      </div>
+      </span>
 
       {showError && (
         <p className="text-red text-[0.875rem] font-normal leading-[150%]">

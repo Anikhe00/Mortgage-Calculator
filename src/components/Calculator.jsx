@@ -103,7 +103,7 @@ export default function Calculator({
         </div>
       </div>
 
-      <Button>Calculate Repayments</Button>
+      <Button type="submit">Calculate Repayments</Button>
     </form>
   );
 }
