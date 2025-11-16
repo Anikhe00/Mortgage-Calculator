@@ -127,7 +127,7 @@ src/
 
 ## 📖 Learning Objectives
 
-By building this project I practiced:
+By building this project, I practised:
 
 - Handling **form inputs & validation** in React
 - Managing **state** with `useState`
@@ -139,7 +139,7 @@ By building this project I practiced:
 
 ## 🚧 Future Improvements
 
-- [ ] Export amortization schedule (CSV / PDF)
+- [ ] Export amortisation schedule (CSV / PDF)
 - [ ] Support multiple currencies (£, $, €)
 - [ ] Add dark mode
 
